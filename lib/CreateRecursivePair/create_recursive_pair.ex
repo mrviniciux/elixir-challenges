@@ -1,34 +1,23 @@
 defmodule CreateRecursivePair do
-  @moduledoc """
-  Documentation for `CreateRecursivePair`.
-  """
+     @moduledoc ~S"""
+     #Create Recursive Pair
+     Giving an array, create a clone for each value
 
-  @doc """
-  Integer
+    ## Examples
 
-  ## Examples
+        iex> CreateRecursivePair.from([1,2])
+        [1,1,2,2]
+    """
 
-      iex> CreateRecursivePair.hasnt_pair([1,1,2,3,3], 2)
-      true
-
-  """
-
-    def hasnt_pair(arr, value) do
+    defp is_odd(arr, value) do
         Enum.count(Enum.filter(arr, fn(filtered_value) -> filtered_value == value end)) < 2
     end
 
-    def create_pairs_from(value) do
-        range_list = [0,1,2,3,4,5]
-
-        Enum.reduce(range_list, fn curr, prev ->
-            case prev do
-                0 -> []
-                1 -> 1
-                5 -> 5
-                nil -> "nulo wtf"
-                _ -> IO.puts(curr)
-            end
-        end)
+    defp create_pairs(arr, value) do
+        is_odd(arr,value) && arr ++ [value]
     end
 
+    def from(range_list) do
+        Enum.reduce(range_list, range_list, fn(curr, prev) -> create_pairs(prev, curr) end) |> Enum.sort()
+    end
 end

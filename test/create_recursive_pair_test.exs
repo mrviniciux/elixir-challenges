@@ -4,6 +4,6 @@ defmodule CreateRecursivePairTest do
 
 
   test "new array containing range of pairs" do
-    assert CreateRecursivePair.create_pairs_from(5) == [0,1,2,3,4,5]
+    assert CreateRecursivePair.from([0,1,2,3]) == [0,0,1,1,2,2,3,3]
   end
 end
