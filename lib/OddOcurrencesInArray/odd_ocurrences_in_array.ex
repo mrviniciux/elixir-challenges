@@ -19,6 +19,7 @@ defmodule OddOcurrencesInArray do
 
   """
 
+  @spec from(nonempty_list(integer)) :: integer
   def from(arr) do
     odd_occurrences = arr
     Enum.reduce(odd_occurrences, fn(prev, curr) -> bxor(prev, curr) end)

@@ -1,6 +1,7 @@
 defmodule CreateRecursivePairOptimized do
      @moduledoc ~S"""
-     #Create Recursive Pair
+     Create Recursive Pair
+     
      Giving an array, create a clone for each value
 
     ## Examples
@@ -9,6 +10,7 @@ defmodule CreateRecursivePairOptimized do
         [1,2,1,2]
     """
 
+    @spec from(nonempty_list(integer)) :: nonempty_list(integer)
     def from(range_list) do
         Enum.reduce(range_list, [], fn (x, acc) -> [x | [x | acc]] end)
           |> Enum.reverse()

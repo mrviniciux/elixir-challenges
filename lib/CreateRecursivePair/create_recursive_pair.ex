@@ -14,9 +14,10 @@ defmodule CreateRecursivePair do
     end
 
     defp create_pairs(arr, value) do
-        is_odd(arr,value) && arr ++ [value]
+        is_odd(arr, value) && arr ++ [value]
     end
 
+    @spec from(nonempty_list(integer)) :: nonempty_list(integer)
     def from(range_list) do
         Enum.reduce(range_list, range_list, fn(curr, prev) -> create_pairs(prev, curr) end) |> Enum.sort()
     end

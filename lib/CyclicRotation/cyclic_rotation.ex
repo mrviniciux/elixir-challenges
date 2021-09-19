@@ -1,11 +1,7 @@
 defmodule CyclicRotation do
 
 @moduledoc ~S"""
-#Cyclic Rotation do
-
-An array A consisting of N integers is given. Rotation of the array means that each element is shifted right by one index, and the last element of the array is moved to the first place. For example, the rotation of array A = [3, 8, 9, 7, 6] is [6, 3, 8, 9, 7] (elements are shifted right by one index and 6 is moved to the first place).
-
-The goal is to rotate array A K times; that is, each element of A will be shifted to the right K times.
+## Cyclic Rotation
 
 Write a function:
 
@@ -17,7 +13,7 @@ For example, given
 
     A = [3, 8, 9, 7, 6]
     K = 3
-the function should return [9, 7, 6, 3, 8]. Three rotations were made:
+the function should return `[9, 7, 6, 3, 8]`. Three rotations were made:
 
     [3, 8, 9, 7, 6] -> [6, 3, 8, 9, 7]
     [6, 3, 8, 9, 7] -> [7, 6, 3, 8, 9]
@@ -26,13 +22,13 @@ For another example, given
 
     A = [0, 0, 0]
     K = 1
-the function should return [0, 0, 0]
+the function should return `[0, 0, 0]`
 
 Given
 
     A = [1, 2, 3, 4]
     K = 4
-the function should return [1, 2, 3, 4]
+the function should return `[1, 2, 3, 4]`
 
 Assume that:
 
@@ -42,8 +38,15 @@ In your solution, focus on correctness. The performance of your solution will no
 
 """
 
+   @doc ~S"""
+   Return a rotated array giving an array and a number of times
+   ### Examples
+       iex> CyclicRotation.from([3, 8, 9, 7, 6], 3)
+       [9, 7, 6, 3, 8]
+   """
+    @spec from(nonempty_list(integer), integer) :: nonempty_list(integer)
     def from(arr, times) do
-        context = arr |> Enum.reverse() |> Enum.slice(0,times) |> Enum.reverse()
+        context = arr |> Enum.reverse() |> Enum.slice(0, times) |> Enum.reverse()
         context ++ (arr -- context)
     end
 
